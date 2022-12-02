@@ -80,6 +80,10 @@ if ( ! function_exists('debug') ){
  */
 function getopts( &$parameters )
 {
+    if ( 'cli' != php_sapi_name() ) {
+        return( $_REQUEST );
+    }
+
     debug("Short:[".implode('', array_values($parameters))."]");
     debug("Long:[".implode(', ', array_keys($parameters))."]");
     
